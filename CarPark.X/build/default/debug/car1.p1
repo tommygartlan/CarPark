@@ -1,15 +1,50 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"1951 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"30 car1.c
+[v _Initial `(v ~T0 @X0 0 ef ]
+"55 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"65
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 OSC1 ]
+"75
+[s S4 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S4 . . VREFN VREFP . SS CLKO CLKI ]
+"84
+[s S5 :5 `uc 1 :1 `uc 1 ]
+[n S5 . . NOT_SS ]
+"88
+[s S6 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S6 . . CVREF . nSS ]
+"94
+[s S7 :5 `uc 1 :1 `uc 1 ]
+[n S7 . . LVDIN ]
+"98
+[s S8 :5 `uc 1 :1 `uc 1 ]
+[n S8 . . HLVDIN ]
+"102
+[s S9 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S9 . . C1OUT C2OUT ]
+"107
+[s S10 :7 `uc 1 :1 `uc 1 ]
+[n S10 . . RJPU ]
+"111
+[s S11 :1 `uc 1 ]
+[n S11 . ULPWUIN ]
+"54
+[u S1 `S2 1 `S3 1 `S4 1 `S5 1 `S6 1 `S7 1 `S8 1 `S9 1 `S10 1 `S11 1 ]
+[n S1 . . . . . . . . . . . ]
+"115
+[v _PORTAbits `VS1 ~T0 @X0 0 e@3968 ]
 "269
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"23 led1.c
-[v _delay_1s `(v ~T0 @X0 0 ef ]
-[v F3317 `(v ~T0 @X0 1 tf1`ul ]
-"152 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18.h
-[v __delay `JF3317 ~T0 @X0 0 e ]
-[p i __delay ]
+"4962
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"1730
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"1951
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3101,89 +3136,71 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 152: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 154: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 156: extern __nonreentrant void _delay3(unsigned char);
-[; ;led1.c: 23: void delay_1s(void);
-"27 led1.c
+[; ;car1.c: 29: void delay_1s(void);
+[; ;car1.c: 30: void Initial(void);
+"43 car1.c
 [v _main `(v ~T0 @X0 1 ef ]
+"44
 {
-[; ;led1.c: 27: void main(void) {
+[; ;car1.c: 43: void main(void)
+[; ;car1.c: 44: {
 [e :U _main ]
 [f ]
-"28
-[v _i `uc ~T0 @X0 1 a ]
-[; ;led1.c: 28: unsigned char i=0;
-[e = _i -> -> 0 `i `uc ]
-[; ;led1.c: 30: TRISB = 0;
-"30
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;led1.c: 32: PORTB = 0x5A;
-"32
-[e = _PORTB -> -> 90 `i `uc ]
-[; ;led1.c: 38: while(1)
-"38
-[e :U 368 ]
-[; ;led1.c: 39: {
-"39
-{
-[; ;led1.c: 41: PORTB = 0x0F;
-"41
-[e = _PORTB -> -> 15 `i `uc ]
-[; ;led1.c: 42: delay_1s();
-"42
-[e ( _delay_1s ..  ]
-[; ;led1.c: 46: PORTB = 0xF0;
+"45
+[v _count `uc ~T0 @X0 1 a ]
+[; ;car1.c: 45: unsigned char count = 0;
+[e = _count -> -> 0 `i `uc ]
+[; ;car1.c: 46: Initial();
 "46
-[e = _PORTB -> -> 240 `i `uc ]
-[; ;led1.c: 47: delay_1s();
-"47
-[e ( _delay_1s ..  ]
-[; ;led1.c: 49: PORTB = 0xFF;
+[e ( _Initial ..  ]
+[; ;car1.c: 49: while(1)
 "49
-[e = _PORTB -> -> 255 `i `uc ]
-[; ;led1.c: 50: delay_1s();
+[e :U 368 ]
+[; ;car1.c: 50: {
 "50
-[e ( _delay_1s ..  ]
+{
+[; ;car1.c: 51: if (PORTAbits.RA0)
+"51
+[e $ ! != -> . . _PORTAbits 0 0 `i -> -> -> 0 `i `Vuc `i 370  ]
+[; ;car1.c: 52: count++;
+"52
+[e ++ _count -> -> 1 `i `uc ]
+[e :U 370 ]
+[; ;car1.c: 53: PORTB = count;
 "53
+[e = _PORTB _count ]
+"54
 }
 [e :U 367 ]
-"38
+"49
 [e $U 368  ]
 [e :U 369 ]
-[; ;led1.c: 53: }
-[; ;led1.c: 55: return;
-"55
-[e $UE 366  ]
-[; ;led1.c: 56: }
+[; ;car1.c: 54: }
+[; ;car1.c: 56: }
 "56
 [e :UE 366 ]
 }
-"58
-[v _delay_1s `(v ~T0 @X0 1 ef ]
-"59
+"65
+[v _Initial `(v ~T0 @X0 1 ef ]
+"66
 {
-[; ;led1.c: 58: void delay_1s(void)
-[; ;led1.c: 59: {
-[e :U _delay_1s ]
+[; ;car1.c: 65: void Initial(void)
+[; ;car1.c: 66: {
+[e :U _Initial ]
 [f ]
-"60
-[v _i `uc ~T0 @X0 1 a ]
-[; ;led1.c: 60: unsigned char i;
-[; ;led1.c: 61: for (i=0;i<25;i++)
-"61
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 25 `i 371  ]
-[e $U 372  ]
-"62
-[e :U 371 ]
-[; ;led1.c: 62: _delay((unsigned long)((40)*(19660800/4000.0)));
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 19660800 `l `d .4000.0 `ul ]
-"61
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 25 `i 371  ]
-[e :U 372 ]
-"62
-}
-[; ;led1.c: 64: }
-"64
-[e :UE 370 ]
+[; ;car1.c: 68: ADCON1 = 0x0f;
+"68
+[e = _ADCON1 -> -> 15 `i `uc ]
+[; ;car1.c: 70: TRISA = 0xff;
+"70
+[e = _TRISA -> -> 255 `i `uc ]
+[; ;car1.c: 71: TRISB = 0x00;
+"71
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;car1.c: 72: PORTB = 0x00;
+"72
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;car1.c: 73: }
+"73
+[e :UE 371 ]
 }

@@ -1,5 +1,5 @@
 
-# 1 "led1.c"
+# 1 "car1.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4085,43 +4085,34 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 23 "led1.c"
+# 29 "car1.c"
 void delay_1s(void);
+void Initial(void);
+
+# 43
+void main(void)
+{
+unsigned char count = 0;
+Initial();
 
 
-
-void main(void) {
-unsigned char i=0;
-
-TRISB = 0;
-
-PORTB = 0x5A;
-
-# 38
 while(1)
 {
-
-PORTB = 0x0F;
-delay_1s();
-
-
-
-PORTB = 0xF0;
-delay_1s();
-
-PORTB = 0xFF;
-delay_1s();
-
+if (PORTAbits.RA0)
+count++;
+PORTB = count;
+}
 
 }
 
-return;
-}
-
-void delay_1s(void)
+# 65
+void Initial(void)
 {
-unsigned char i;
-for (i=0;i<25;i++)
-_delay((unsigned long)((40)*(19660800/4000.0)));
 
+ADCON1 = 0x0f;
+
+TRISA = 0xff;
+TRISB = 0x00;
+PORTB = 0x00;
 }
+
