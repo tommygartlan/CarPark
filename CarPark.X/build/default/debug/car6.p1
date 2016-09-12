@@ -1,43 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"30 car1.c
+"32 car6.c
 [v _Initial `(v ~T0 @X0 0 ef ]
-"55 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
-[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
-"65
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 OSC1 ]
-"75
-[s S4 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S4 . . VREFN VREFP . SS CLKO CLKI ]
-"84
-[s S5 :5 `uc 1 :1 `uc 1 ]
-[n S5 . . NOT_SS ]
-"88
-[s S6 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S6 . . CVREF . nSS ]
-"94
-[s S7 :5 `uc 1 :1 `uc 1 ]
-[n S7 . . LVDIN ]
-"98
-[s S8 :5 `uc 1 :1 `uc 1 ]
-[n S8 . . HLVDIN ]
-"102
-[s S9 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S9 . . C1OUT C2OUT ]
-"107
-[s S10 :7 `uc 1 :1 `uc 1 ]
-[n S10 . . RJPU ]
-"111
-[s S11 :1 `uc 1 ]
-[n S11 . ULPWUIN ]
-"54
-[u S1 `S2 1 `S3 1 `S4 1 `S5 1 `S6 1 `S7 1 `S8 1 `S9 1 `S10 1 `S11 1 ]
-[n S1 . . . . . . . . . . . ]
-"115
-[v _PORTAbits `VS1 ~T0 @X0 0 e@3968 ]
-"269
+"34
+[v _key `(b ~T0 @X0 0 ef1`uc ]
+"36
+[v _decrease_cars `(v ~T0 @X0 0 ef ]
+"269 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "4962
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
@@ -45,6 +14,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
 "1951
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+[v F3317 `(v ~T0 @X0 1 tf1`ul ]
+"152 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18.h
+[v __delay `JF3317 ~T0 @X0 0 e ]
+[p i __delay ]
+"49 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
+[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3136,71 +3111,254 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 152: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 154: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 156: extern __nonreentrant void _delay3(unsigned char);
-[; ;car1.c: 29: void delay_1s(void);
-[; ;car1.c: 30: void Initial(void);
-"43 car1.c
-[v _main `(v ~T0 @X0 1 ef ]
-"44
+[; ;car6.c: 32: void Initial(void);
+[; ;car6.c: 33: void delay_1s(void);
+[; ;car6.c: 34: bit key (unsigned char bitnum);
+[; ;car6.c: 36: void decrease_cars(void);
+"46 car6.c
+[v _car_count `uc ~T0 @X0 1 e ]
+[i _car_count
+-> -> 0 `i `uc
+]
+[; ;car6.c: 46: unsigned char car_count=0;
+[v F3335 `(v ~T0 @X0 1 tf ]
+"64
+[v _increase_cars `TF3335 ~T0 @X0 1 e ]
+"65
 {
-[; ;car1.c: 43: void main(void)
-[; ;car1.c: 44: {
-[e :U _main ]
+[; ;car6.c: 64: inline void increase_cars(void)
+[; ;car6.c: 65: {
+[e :U _increase_cars ]
 [f ]
-"45
-[v _count `uc ~T0 @X0 1 a ]
-[; ;car1.c: 45: unsigned char count = 0;
-[e = _count -> -> 0 `i `uc ]
-[; ;car1.c: 46: Initial();
-"46
-[e ( _Initial ..  ]
-[; ;car1.c: 49: while(1)
-"49
-[e :U 368 ]
-[; ;car1.c: 50: {
-"50
-{
-[; ;car1.c: 51: if (PORTAbits.RA0)
-"51
-[e $ ! != -> . . _PORTAbits 0 0 `i -> -> -> 0 `i `Vuc `i 370  ]
-[; ;car1.c: 52: count++;
-"52
-[e ++ _count -> -> 1 `i `uc ]
-[e :U 370 ]
-[; ;car1.c: 53: PORTB = count;
-"53
-[e = _PORTB _count ]
-"54
-}
+[; ;car6.c: 66: if (car_count < 20)
+"66
+[e $ ! < -> _car_count `i -> 20 `i 367  ]
+[; ;car6.c: 67: car_count ++;
+"67
+[e ++ _car_count -> -> 1 `i `uc ]
 [e :U 367 ]
-"49
-[e $U 368  ]
-[e :U 369 ]
-[; ;car1.c: 54: }
-[; ;car1.c: 56: }
-"56
+[; ;car6.c: 68: }
+"68
 [e :UE 366 ]
 }
-"65
-[v _Initial `(v ~T0 @X0 1 ef ]
-"66
+"74
+[v _main `(v ~T0 @X0 1 ef ]
+"75
 {
-[; ;car1.c: 65: void Initial(void)
-[; ;car1.c: 66: {
+[; ;car6.c: 74: void main(void)
+[; ;car6.c: 75: {
+[e :U _main ]
+[f ]
+[; ;car6.c: 77: Initial();
+"77
+[e ( _Initial ..  ]
+[; ;car6.c: 80: while(1)
+"80
+[e :U 370 ]
+[; ;car6.c: 81: {
+"81
+{
+[; ;car6.c: 83: while ( !(key(0)) && !(key(1)) );
+"83
+[e $U 372  ]
+[e :U 373 ]
+[e :U 372 ]
+[e $ && ! ( _key (1 -> -> 0 `i `uc ! ( _key (1 -> -> 1 `i `uc 373  ]
+[e :U 374 ]
+[; ;car6.c: 85: if (key(0))
+"85
+[e $ ! ( _key (1 -> -> 0 `i `uc 375  ]
+[; ;car6.c: 86: increase_cars();
+"86
+[e ( _increase_cars ..  ]
+[e $U 376  ]
+"87
+[e :U 375 ]
+[; ;car6.c: 87: else
+[; ;car6.c: 88: decrease_cars();
+"88
+[e ( _decrease_cars ..  ]
+[e :U 376 ]
+[; ;car6.c: 90: PORTB = car_count;
+"90
+[e = _PORTB _car_count ]
+[; ;car6.c: 92: while ( key(0) || key(1) );
+"92
+[e $U 377  ]
+[e :U 378 ]
+[e :U 377 ]
+[e $ || ( _key (1 -> -> 0 `i `uc ( _key (1 -> -> 1 `i `uc 378  ]
+[e :U 379 ]
+"94
+}
+[e :U 369 ]
+"80
+[e $U 370  ]
+[e :U 371 ]
+[; ;car6.c: 94: }
+[; ;car6.c: 96: }
+"96
+[e :UE 368 ]
+}
+"105
+[v _Initial `(v ~T0 @X0 1 ef ]
+"106
+{
+[; ;car6.c: 105: void Initial(void)
+[; ;car6.c: 106: {
 [e :U _Initial ]
 [f ]
-[; ;car1.c: 68: ADCON1 = 0x0f;
-"68
+[; ;car6.c: 108: ADCON1 = 0x0f;
+"108
 [e = _ADCON1 -> -> 15 `i `uc ]
-[; ;car1.c: 70: TRISA = 0xff;
-"70
+[; ;car6.c: 110: TRISA = 0xff;
+"110
 [e = _TRISA -> -> 255 `i `uc ]
-[; ;car1.c: 71: TRISB = 0x00;
-"71
+[; ;car6.c: 111: TRISB = 0x00;
+"111
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;car1.c: 72: PORTB = 0x00;
-"72
+[; ;car6.c: 112: PORTB = 0x00;
+"112
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;car1.c: 73: }
-"73
-[e :UE 371 ]
+[; ;car6.c: 113: }
+"113
+[e :UE 380 ]
+}
+"115
+[v _delay_1s `(v ~T0 @X0 1 ef ]
+"116
+{
+[; ;car6.c: 115: void delay_1s(void)
+[; ;car6.c: 116: {
+[e :U _delay_1s ]
+[f ]
+"117
+[v _i `uc ~T0 @X0 1 a ]
+[; ;car6.c: 117: unsigned char i;
+[; ;car6.c: 118: for (i=0;i<25;i++)
+"118
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 25 `i 382  ]
+[e $U 383  ]
+"119
+[e :U 382 ]
+[; ;car6.c: 119: _delay((unsigned long)((40)*(19660800/4000.0)));
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 19660800 `l `d .4000.0 `ul ]
+"118
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 25 `i 382  ]
+[e :U 383 ]
+"119
+}
+[; ;car6.c: 121: }
+"121
+[e :UE 381 ]
+}
+"128
+[v _key `(b ~T0 @X0 1 ef1`uc ]
+"129
+{
+[; ;car6.c: 128: bit key ( unsigned char bitnum )
+[; ;car6.c: 129: {
+[e :U _key ]
+"128
+[v _bitnum `uc ~T0 @X0 1 r1 ]
+"129
+[f ]
+"131
+[v _count `uc ~T0 @X0 1 a ]
+[; ;car6.c: 131: unsigned char count = 0 ;
+[e = _count -> -> 0 `i `uc ]
+"132
+[v _oldv `uc ~T0 @X0 1 a ]
+[v _newv `uc ~T0 @X0 1 a ]
+"133
+[v _mask_val `uc ~T0 @X0 1 a ]
+[; ;car6.c: 132: unsigned char oldv, newv ;
+[; ;car6.c: 133: unsigned char mask_val;
+[; ;car6.c: 135: mask_val = 0x01 << bitnum;
+"135
+[e = _mask_val -> << -> 1 `i _bitnum `uc ]
+[; ;car6.c: 137: oldv = PORTA & mask_val ;
+"137
+[e = _oldv -> & -> _PORTA `i -> _mask_val `i `uc ]
+[; ;car6.c: 138: while ( count < 2 ) {
+"138
+[e $U 386  ]
+[e :U 387 ]
+{
+[; ;car6.c: 139: newv = PORTA & mask_val ;
+"139
+[e = _newv -> & -> _PORTA `i -> _mask_val `i `uc ]
+[; ;car6.c: 140: if ( oldv == newv ) {
+"140
+[e $ ! == -> _oldv `i -> _newv `i 389  ]
+{
+[; ;car6.c: 141: count++ ;
+"141
+[e ++ _count -> -> 1 `i `uc ]
+"142
+}
+[; ;car6.c: 142: }
+[e $U 390  ]
+"143
+[e :U 389 ]
+[; ;car6.c: 143: else {
+{
+[; ;car6.c: 144: count = 0 ;
+"144
+[e = _count -> -> 0 `i `uc ]
+[; ;car6.c: 145: oldv = newv ;
+"145
+[e = _oldv _newv ]
+"146
+}
+[e :U 390 ]
+"147
+}
+[e :U 386 ]
+"138
+[e $ < -> _count `i -> 2 `i 387  ]
+[e :U 388 ]
+[; ;car6.c: 146: }
+[; ;car6.c: 147: }
+[; ;car6.c: 149: if (oldv)
+"149
+[e $ ! != -> _oldv `i -> -> -> 0 `i `uc `i 391  ]
+[; ;car6.c: 150: return 1;
+"150
+[e ) -> -> 1 `i `b ]
+[e $UE 385  ]
+[e $U 392  ]
+"151
+[e :U 391 ]
+[; ;car6.c: 151: else
+[; ;car6.c: 152: return 0;
+"152
+[e ) -> -> 0 `i `b ]
+[e $UE 385  ]
+[e :U 392 ]
+[; ;car6.c: 154: }
+"154
+[e :UE 385 ]
+}
+"163
+[v _decrease_cars `(v ~T0 @X0 1 ef ]
+"164
+{
+[; ;car6.c: 163: void decrease_cars(void)
+[; ;car6.c: 164: {
+[e :U _decrease_cars ]
+[f ]
+[; ;car6.c: 165: if (car_count > 0)
+"165
+[e $ ! > -> _car_count `i -> 0 `i 394  ]
+[; ;car6.c: 166: car_count --;
+"166
+[e -- _car_count -> -> 1 `i `uc ]
+[e :U 394 ]
+[; ;car6.c: 169: }
+"169
+[e :UE 393 ]
 }

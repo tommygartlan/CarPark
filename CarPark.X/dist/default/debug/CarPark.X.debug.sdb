@@ -23,62 +23,18 @@
 [v ___flmul __flmul `(d  1 e 3 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"43 J:\myusb\ES_proj\Mplabx\CarPark\CarPark.X\car1.c
+"64 J:\myusb\ES_proj\Mplabx\CarPark\CarPark.X\car6.c
+[v _increase_cars increase_cars `T(v  1 e 0 0 ]
+"74
 [v _main main `(v  1 e 0 0 ]
-"65
+"105
 [v _Initial Initial `(v  1 e 0 0 ]
-[s S25 . 1 `uc 1 RA0 1 0 :1:0 
-`uc 1 RA1 1 0 :1:1 
-`uc 1 RA2 1 0 :1:2 
-`uc 1 RA3 1 0 :1:3 
-`uc 1 RA4 1 0 :1:4 
-`uc 1 RA5 1 0 :1:5 
-`uc 1 RA6 1 0 :1:6 
-`uc 1 RA7 1 0 :1:7 
-]
-"115 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
-[s S34 . 1 `uc 1 AN0 1 0 :1:0 
-`uc 1 AN1 1 0 :1:1 
-`uc 1 AN2 1 0 :1:2 
-`uc 1 AN3 1 0 :1:3 
-`uc 1 T0CKI 1 0 :1:4 
-`uc 1 AN4 1 0 :1:5 
-`uc 1 OSC2 1 0 :1:6 
-`uc 1 OSC1 1 0 :1:7 
-]
-[s S43 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 VREFN 1 0 :1:2 
-`uc 1 VREFP 1 0 :1:3 
-`uc 1 . 1 0 :1:4 
-`uc 1 SS 1 0 :1:5 
-`uc 1 CLKO 1 0 :1:6 
-`uc 1 CLKI 1 0 :1:7 
-]
-[s S51 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 NOT_SS 1 0 :1:5 
-]
-[s S54 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 CVREF 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 nSS 1 0 :1:5 
-]
-[s S59 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 LVDIN 1 0 :1:5 
-]
-[s S62 . 1 `uc 1 . 1 0 :5:0 
-`uc 1 HLVDIN 1 0 :1:5 
-]
-[s S65 . 1 `uc 1 . 1 0 :4:0 
-`uc 1 C1OUT 1 0 :1:4 
-`uc 1 C2OUT 1 0 :1:5 
-]
-[s S69 . 1 `uc 1 . 1 0 :7:0 
-`uc 1 RJPU 1 0 :1:7 
-]
-[s S72 . 1 `uc 1 ULPWUIN 1 0 :1:0 
-]
-[u S74 . 1 `S25 1 . 1 0 `S34 1 . 1 0 `S43 1 . 1 0 `S51 1 . 1 0 `S54 1 . 1 0 `S59 1 . 1 0 `S62 1 . 1 0 `S65 1 . 1 0 `S69 1 . 1 0 `S72 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES74  1 e 1 @3968 ]
+"128
+[v _key key `(b  1 e 0 0 ]
+"163
+[v _decrease_cars decrease_cars `(v  1 e 0 0 ]
+"49 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "269
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 "1730
@@ -87,15 +43,43 @@
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "4962
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-"43 J:\myusb\ES_proj\Mplabx\CarPark\CarPark.X\car1.c
+"46 J:\myusb\ES_proj\Mplabx\CarPark\CarPark.X\car6.c
+[v _car_count car_count `uc  1 e 1 0 ]
+"74
 [v _main main `(v  1 e 0 0 ]
 {
-"45
-[v main@count count `uc  1 a 1 0 ]
-"56
+"96
 } 0
-"65
+"128
+[v _key key `(b  1 e 0 0 ]
+{
+[v key@bitnum bitnum `uc  1 a 1 wreg ]
+"132
+[v key@oldv oldv `uc  1 a 1 6 ]
+"133
+[v key@mask_val mask_val `uc  1 a 1 5 ]
+"132
+[v key@newv newv `uc  1 a 1 4 ]
+"131
+[v key@count count `uc  1 a 1 3 ]
+"128
+[v key@bitnum bitnum `uc  1 a 1 wreg ]
+"131
+[v key@bitnum bitnum `uc  1 a 1 2 ]
+"154
+} 0
+"64
+[v _increase_cars increase_cars `T(v  1 e 0 0 ]
+{
+"68
+} 0
+"163
+[v _decrease_cars decrease_cars `(v  1 e 0 0 ]
+{
+"169
+} 0
+"105
 [v _Initial Initial `(v  1 e 0 0 ]
 {
-"73
+"113
 } 0

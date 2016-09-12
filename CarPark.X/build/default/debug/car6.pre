@@ -1,5 +1,5 @@
 
-# 1 "car1.c"
+# 1 "car6.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4085,27 +4085,49 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 29 "car1.c"
-void delay_1s(void);
+# 32 "car6.c"
 void Initial(void);
+void delay_1s(void);
+bit key (unsigned char bitnum);
 
-# 43
+void decrease_cars(void);
+
+# 46
+unsigned char car_count=0;
+
+# 64
+inline void increase_cars(void)
+{
+if (car_count < 20)
+car_count ++;
+}
+
+# 74
 void main(void)
 {
-unsigned char count = 0;
+
 Initial();
 
 
 while(1)
 {
-if (PORTAbits.RA0)
-count++;
-PORTB = count;
-}
+
+while ( !(key(0)) && !(key(1)) );
+
+if (key(0))
+increase_cars();
+else
+decrease_cars();
+
+PORTB = car_count;
+
+while ( key(0) || key(1) );
 
 }
 
-# 65
+}
+
+# 105
 void Initial(void)
 {
 
@@ -4114,5 +4136,51 @@ ADCON1 = 0x0f;
 TRISA = 0xff;
 TRISB = 0x00;
 PORTB = 0x00;
+}
+
+void delay_1s(void)
+{
+unsigned char i;
+for (i=0;i<25;i++)
+_delay((unsigned long)((40)*(19660800/4000.0)));
+
+}
+
+# 128
+bit key ( unsigned char bitnum )
+{
+
+unsigned char count = 0 ;
+unsigned char oldv, newv ;
+unsigned char mask_val;
+
+mask_val = 0x01 << bitnum;
+
+oldv = PORTA & mask_val ;
+while ( count < 2 ) {
+newv = PORTA & mask_val ;
+if ( oldv == newv ) {
+count++ ;
+}
+else {
+count = 0 ;
+oldv = newv ;
+}
+}
+
+if (oldv)
+return 1;
+else
+return 0;
+
+}
+
+# 163
+void decrease_cars(void)
+{
+if (car_count > 0)
+car_count --;
+
+
 }
 
