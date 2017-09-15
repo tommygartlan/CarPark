@@ -53,9 +53,9 @@ void main(void)
 	
 	//Flash sequence to test board at startup
     //checks the port and the timing.....good idea!!!
-	PORTB = 0xff;
+	LATB = 0xff;
 	delay_1s();
-	PORTB = 0x00;
+	LATB = 0x00;
 	
 	//foreground program
 	while(1)
@@ -66,10 +66,10 @@ void main(void)
 			count++;
 		else
 		{
-			if (count != 0)
+			if (count != 0)       //why is this necessary?
 				count--;
 		}
-		PORTB = count;
+		LATB = count;
 		
 		while ( key(0) || key(1) );   //wait for switches to be released
 		
@@ -91,7 +91,7 @@ void Initial(void)
 	
 	TRISA = 0xff;
 	TRISB = 0x00;
-	PORTB = 0x00;
+	LATB = 0x00;
 }
 
 void delay_1s(void)

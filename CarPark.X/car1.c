@@ -5,9 +5,17 @@ LEDs connected to PORTB keep track of number of cars
 SW0 connected to PORTA.0 is in gate sensor
 SW1 connected to PORTA.1 is in gate sensor
 
-Issue with using 'if' statment to check switch since
+Issue with using 'if' statement to check switch since
 switch is only checked as pass through.
 Should use 'while' to wait for switch to be pressed.
+ * 
+ * 
+ * Remember:-
+ * USe TRISX to set directions of pins
+ * USe LATX when pins are outputs and you want to write value
+ * Use PORTX when pins are inputs and you want to read value
+ * 
+ *where X in name stands for A,B,C,D depending on port
 *****************************************************/
 
 
@@ -50,7 +58,7 @@ void main(void)
 	{
 		if (PORTAbits.RA0)      //this doesn't work since we cycle the loop so fast
 			count++;
-		PORTB = count;
+		LATB = count;
 	}
 	
 }
@@ -69,10 +77,24 @@ void Initial(void)
 	
 	TRISA = 0xff;
 	TRISB = 0x00;
-	PORTB = 0x00;
+	LATB = 0x00;
+    delay_1s();
+    delay_1s();
+    LATB = 0xFF;
+    delay_1s();
+    delay_1s();
+    LATB = 0x00;
+    delay_1s();
+    delay_1s();
 }
 
 
 
-
+void delay_1s(void)
+{
+    unsigned char i;
+    for (i=0;i<25;i++)
+            __delay_ms(40);  //max value is 40 since this depends on the _delay() function which has a max number of cycles
+    
+}
 

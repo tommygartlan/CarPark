@@ -87,7 +87,7 @@ void main(void)
 		else
 			decrease_cars();
 			
-		PORTB = car_count;
+		LATB = car_count;
 		
 		while ( key(0) || key(1) );   //wait for switches to be released
 		
@@ -106,10 +106,15 @@ void Initial(void)
 {
 
 	ADCON1 = 0x0f; //pic18f4520
-	
 	TRISA = 0xff;
 	TRISB = 0x00;
-	PORTB = 0x00;
+	LATB = 0x00;
+    delay_1s();
+    delay_1s();
+    LATB = 0xFF;
+    delay_1s();
+    delay_1s();
+    LATB = 0x00;
 }
 
 void delay_1s(void)

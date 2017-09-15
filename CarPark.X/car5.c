@@ -48,7 +48,8 @@ void decrease_cars(void);
 /*****************************************
  Global Variables
 ******************************************/
-unsigned char car_count=0;
+unsigned char car_count=0;   //car_count is a global variable. Why? Not really
+                             //a good idea but we'll look at this again.
 
 
 
@@ -70,7 +71,7 @@ void main(void)
 		else
 			decrease_cars();
 			
-		PORTB = car_count;
+		LATB = car_count;
 		
 		while ( key(0) || key(1) );   //wait for switches to be released
 		
@@ -92,7 +93,7 @@ void Initial(void)
 	
 	TRISA = 0xff;
 	TRISB = 0x00;
-	PORTB = 0x00;
+	LATB = 0x00;
 }
 
 void delay_1s(void)

@@ -51,7 +51,7 @@ void main(void)
 		while (!(PORTAbits.RA0));  //wait for switch to be pushed
 		count++;
 		while (PORTAbits.RA0);   //wait for switch to be released
-		PORTB = count;  //note it's when the button is released that count is updated on the PORT
+		LATB = count;  //note it's when the button is released that count is updated on the PORT
 	}
 	
 }
@@ -70,7 +70,7 @@ void Initial(void)
 	
 	TRISA = 0xff;
 	TRISB = 0x00;
-	PORTB = 0x00;
+	LATB = 0x00;
 }
 
 

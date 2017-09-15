@@ -3,7 +3,7 @@
 Car Park project using PIC16F877A 
 LEDs connected to PORTB keep track of number of cars
 SW0 connected to PORTA.0 is in gate sensor
-SW1 connected to PORTA.1 is in gate sensor
+SW1 connected to PORTA.1 is out gate sensor
 
  * CAR 3 
 Add a function to software 'debounce' the key
@@ -51,7 +51,7 @@ void main(void)
 		while (!(key()));  //wait for switch to be pushed
 		count++;
 		while (key());   //wait for switch to be released
-		PORTB = count;
+		LATB = count;
 	}
 	
 }
@@ -70,7 +70,7 @@ void Initial(void)
 	
 	TRISA = 0xff;
 	TRISB = 0x00;
-	PORTB = 0x00;
+	LATB = 0x00;
 }
 
 
@@ -86,7 +86,7 @@ bit key ()
     unsigned char oldv, newv ;
     
     
-    oldv = PORTAbits.RA0 ;                      //Note always tied to pin 0 of porta
+    oldv = PORTAbits.RA0 ;        //Not very versatile since tied to pin 0 of porta
     while ( count < 20 ) {
         newv = PORTAbits.RA0 ;
         if ( oldv == newv ) {
